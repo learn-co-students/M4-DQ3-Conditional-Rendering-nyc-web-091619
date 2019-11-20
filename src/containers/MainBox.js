@@ -5,6 +5,44 @@ import { Profile, Photos, Cocktails, Pokemon} from '../components/Pages.js'
 class MainBox extends React.Component {
 
 
+  state = {
+    tag: <Profile />
+  }
+
+  setTag = (tag) => {
+
+    switch(tag) {
+      
+      case "profile":
+        this.setState({
+          tag: <Profile/>
+        })
+        break;
+
+      case "photo":
+        this.setState({
+          tag: <Photos/>
+        })
+        break;
+      case "cocktail":
+        this.setState({
+          tag: <Cocktails/>
+        })
+        break;
+      case "pokemon":
+        this.setState({
+          tag: <Pokemon/>
+        })
+        break;
+
+      default:
+        break;
+    }
+
+  }
+
+ 
+
   render() {
 
     /*
@@ -13,12 +51,11 @@ class MainBox extends React.Component {
 
     */
 
-    const detailsToDisplay = <div>Hi, I'm a div!</div>
-
+    
     return (
       <div>
-        <MenuBar />
-        {detailsToDisplay}
+        <MenuBar setTag={this.setTag} />
+        {this.state.tag}
       </div>
     )
   }
